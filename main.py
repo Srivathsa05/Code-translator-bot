@@ -1,3 +1,4 @@
+#python bot to translate code using AI
 import os
 import re
 import logging
@@ -5,13 +6,12 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
-# Set up logging
+# Logging in
 logging.basicConfig(format="%(asctime)s - %(levelname)s - %(message)s", level=logging.INFO)
 
 class CodeTranslator:
     def __init__(self):
         # Initialize with a pre-trained model for code translation
-        # Note: You might need to experiment with different models
         try:
             self.tokenizer = AutoTokenizer.from_pretrained("facebook/humangen-translate-code")
             self.model = AutoModelForSeq2SeqLM.from_pretrained("facebook/humangen-translate-code")
